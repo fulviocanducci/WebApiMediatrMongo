@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApi.Extensions;
 
 namespace WebApi
 {
@@ -24,6 +25,7 @@ namespace WebApi
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Global();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
