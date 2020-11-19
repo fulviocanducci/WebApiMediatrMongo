@@ -1,11 +1,12 @@
 ﻿using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
+using WebApi.Models;
 using WebApi.Repositories;
 
-namespace WebApi.Commands.Friend
+namespace WebApi.Commands
 {
-    public class FriendGetByIdCommandHandler : IRequestHandler<FriendGetByIdCommand, Models.Friend>
+    public class FriendGetByIdCommandHandler : IRequestHandler<FriendGetByIdCommand, Friend>
     {
         public FriendGetByIdCommandHandler(FriendRepositoryAbstract friendRepository)
         {
@@ -14,7 +15,7 @@ namespace WebApi.Commands.Friend
 
         public FriendRepositoryAbstract FriendRepository { get; }
 
-        public async Task<Models.Friend> Handle(FriendGetByIdCommand request, CancellationToken cancellationToken)
+        public async Task<Friend> Handle(FriendGetByIdCommand request, CancellationToken cancellationToken)
         {
             return await FriendRepository.FindAsync(request.Id);
         }

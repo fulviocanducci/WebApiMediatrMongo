@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using System.ComponentModel.DataAnnotations;
 
-namespace WebApi.Commands.Friend
+namespace WebApi.Commands
 {
     public class FriendUpdateCommand : IRequest<bool>
     {

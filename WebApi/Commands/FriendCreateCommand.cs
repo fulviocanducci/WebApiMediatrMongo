@@ -1,9 +1,10 @@
 ﻿using MediatR;
 using System.ComponentModel.DataAnnotations;
+using WebApi.Models;
 
-namespace WebApi.Commands.Friend
+namespace WebApi.Commands
 {
-    public class FriendCreateCommand : IRequest<Models.Friend>
+    public class FriendCreateCommand : IRequest<Friend>
     {
         [Required()]
         public string Name { get; set; }

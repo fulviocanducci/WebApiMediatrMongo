@@ -1,11 +1,9 @@
 ﻿using MediatR;
-using System.Threading;
-using System.Threading.Tasks;
-using WebApi.Repositories;
+using WebApi.Models;
 
-namespace WebApi.Commands.Friend
+namespace WebApi.Commands
 {
-    public class FriendGetByIdCommand : IRequest<Models.Friend>
+    public class FriendGetByIdCommand : IRequest<Friend>
     {
         public string Id { get; }
         public FriendGetByIdCommand(string id)
@@ -15,20 +13,6 @@ namespace WebApi.Commands.Friend
                 throw new System.ArgumentException($"'{nameof(id)}' cannot be null or empty", nameof(id));
             }
             Id = id;
-        }
-    }
-
-    public class FriendRemoveByIdCommandHandler : IRequestHandler<FriendRemoveByIdCommand, bool>
-    {
-        public FriendRemoveByIdCommandHandler(FriendRepositoryAbstract friendRepository)
-        {
-            FriendRepository = friendRepository;
-        }
-
-        public FriendRepositoryAbstract FriendRepository { get; }
-        public async Task<bool> Handle(FriendRemoveByIdCommand request, CancellationToken cancellationToken)
-        {
-            return await FriendRepository.DeleteAsync(request.Id);
         }
     }
 }

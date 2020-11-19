@@ -1,9 +1,10 @@
 ﻿using MediatR;
 using System.Collections.Generic;
+using WebApi.Models;
 
-namespace WebApi.Commands.Friend
+namespace WebApi.Commands
 {
-    public class FriendGetCommand : IRequest<IList<Models.Friend>>
+    public class FriendGetCommand : IRequest<IList<Friend>>
     {
 
     }

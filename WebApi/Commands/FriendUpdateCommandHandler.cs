@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using WebApi.Repositories;
 
-namespace WebApi.Commands.Friend
+namespace WebApi.Commands
 {
     public class FriendUpdateCommandHandler : IRequestHandler<FriendUpdateCommand, bool>
     {

@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace WebApi.Commands.Friend
+namespace WebApi.Commands
 {
     public class FriendRemoveByIdCommand : IRequest<bool>
     {
