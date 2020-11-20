@@ -15,6 +15,7 @@ namespace WebApi.Extensions
             services.AddMediatr();
             return services;
         }
+        
         private static IServiceCollection AddMediatr(this IServiceCollection services)
         {
             return services.AddMediatR(typeof(Startup));            
