@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using WebApi.Repositories;
 
-namespace WebApi.Commands
+namespace WebApi.Commands.FriendCommands
 {
     public class FriendRemoveByIdCommandHandler : IRequestHandler<FriendRemoveByIdCommand, bool>
     {
@@ -13,6 +13,7 @@ namespace WebApi.Commands
         }
 
         public FriendRepositoryAbstract FriendRepository { get; }
+
         public async Task<bool> Handle(FriendRemoveByIdCommand request, CancellationToken cancellationToken)
         {
             return await FriendRepository.DeleteAsync(request.Id);

@@ -1,11 +1,11 @@
 ﻿using MediatR;
 
-namespace WebApi.Commands
+namespace WebApi.Commands.AuthorCommands
 {
-    public class FriendRemoveByIdCommand : IRequest<bool>
+    public class AuthorRemoveByIdCommand : IRequest<bool>
     {
         public string Id { get; }
-        public FriendRemoveByIdCommand(string id)
+        public AuthorRemoveByIdCommand(string id)
         {
             if (string.IsNullOrEmpty(id))
             {

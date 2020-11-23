@@ -1,15 +1,16 @@
 ﻿using MediatR;
+using System;
 using System.ComponentModel.DataAnnotations;
 using WebApi.Models;
 
-namespace WebApi.Commands
+namespace WebApi.Commands.AuthorCommands
 {
-    public class FriendCreateCommand : IRequest<Friend>
+    public class AuthorCreateCommand : IRequest<Author>
     {
         [Required()]
         public string Name { get; set; }
 
         [Required()]
-        public bool Like { get; set; }
+        public DateTime Created { get; set; }
     }
 }

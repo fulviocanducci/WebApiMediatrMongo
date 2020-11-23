@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using WebApi.Models;
 
-namespace WebApi.Commands
+namespace WebApi.Commands.FriendCommands
 {
     public class FriendGetByIdCommand : IRequest<Friend>
     {

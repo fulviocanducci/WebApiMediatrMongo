@@ -1,9 +1,10 @@
 ﻿using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
+using WebApi.Models;
 using WebApi.Repositories;
 
-namespace WebApi.Commands
+namespace WebApi.Commands.FriendCommands
 {
     public class FriendUpdateCommandHandler : IRequestHandler<FriendUpdateCommand, bool>
     {
@@ -15,7 +16,7 @@ namespace WebApi.Commands
         public FriendRepositoryAbstract FriendRepository { get; }
         public async Task<bool> Handle(FriendUpdateCommand request, CancellationToken cancellationToken)
         {
-            return await FriendRepository.EditAsync(request.Id, new Models.Friend
+            return await FriendRepository.EditAsync(request.Id, new Friend
             {
                 Id = request.Id,
                 Name = request.Name,

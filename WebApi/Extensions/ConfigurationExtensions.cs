@@ -37,8 +37,9 @@ namespace WebApi.Extensions
 
         private static IServiceCollection AddRepositories(this IServiceCollection services)
         {
-            return services.AddScoped<FriendRepositoryAbstract, FriendRepository>();
+            return services
+                .AddScoped<FriendRepositoryAbstract, FriendRepository>()
+                .AddScoped<AuthorRepositoryAbstract, AuthorRepository>();
         }
-
     }
 }

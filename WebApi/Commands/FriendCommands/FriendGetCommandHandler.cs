@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using WebApi.Models;
 using WebApi.Repositories;
 
-namespace WebApi.Commands
+namespace WebApi.Commands.FriendCommands
 {
     public class FriendGetCommandHandler : IRequestHandler<FriendGetCommand, IList<Friend>>
     {
