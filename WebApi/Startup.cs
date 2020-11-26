@@ -21,9 +21,11 @@ namespace WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.Global();
-            //services
-            //    .AddMvc()
-            //    .AddXmlSerializerFormatters();
+            services
+                .AddMvc()                
+                .AddXmlDataContractSerializerFormatters()
+                .AddXmlSerializerFormatters();
+                
             services.AddCors();
             services.AddControllers();
             services.AddSwaggerGen(c =>
