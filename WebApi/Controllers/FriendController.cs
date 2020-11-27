@@ -23,7 +23,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IList<Friend>))]        
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IList<Friend>))]
         public async Task<IEnumerable<Friend>> Get()
         {
             return await Mediator.Send(new FriendGetCommand());
@@ -32,9 +32,9 @@ namespace WebApi.Controllers
 
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Friend))]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]        
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         //[HttpGet("{id}.{format?}")]
-        public async Task<IActionResult> Get(string id/*, string format*/)        
+        public async Task<IActionResult> Get(string id/*, string format*/)
         {
             var model = await Mediator.Send(new FriendGetByIdCommand(id));
             if (model != null)
@@ -88,13 +88,13 @@ namespace WebApi.Controllers
             {
                 throw;
             }
-            
+
         }
 
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(bool))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]        
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Delete(string id)
         {
             try
@@ -109,7 +109,7 @@ namespace WebApi.Controllers
             catch (Exception)
             {
                 throw;
-            }            
+            }
         }
     }
 }
