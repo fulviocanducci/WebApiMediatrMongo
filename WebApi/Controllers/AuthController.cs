@@ -35,8 +35,18 @@ namespace WebApi.Controllers
         //    return Ok(await Mediator.Send(command));
         //}
 
-        [HttpPost]
+        [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(User))]
+        [Authorize("Bearer")]
+        public async Task<IActionResult> GetUser()
+        {
+            if (User.Identity.IsAuthenticated == false) return NotFound();
+            string email = User.Identity.Name;
+            return Ok(await Mediator.Send(new UserGetByEmailCommand(email)));
+        }
+
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(TokenValidate))]
         public async Task<IActionResult> Login(
             [FromServices] SigningConfigurations signingConfigurations,
             [FromServices] TokenConfigurations tokenConfigurations,
@@ -48,6 +58,8 @@ namespace WebApi.Controllers
 
                 ClaimsIdentity claimsIdentity = new ClaimsIdentity(new GenericIdentity(result.User.Email, "Login"),
                     new[] {
+                        new Claim(JwtRegisteredClaimNames.NameId, result.User.Id),
+                        new Claim(JwtRegisteredClaimNames.Email, result.User.Email),
                         new Claim(JwtRegisteredClaimNames.Jti, result.User.Email),
                         new Claim(JwtRegisteredClaimNames.UniqueName, result.User.Email)
                     }
