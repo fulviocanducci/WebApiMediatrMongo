@@ -2,6 +2,7 @@
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using WebApi.Repositories;
+using WebApi.Services;
 
 namespace WebApi.Extensions
 {
@@ -38,6 +39,8 @@ namespace WebApi.Extensions
         private static IServiceCollection AddRepositories(this IServiceCollection services)
         {
             return services
+                .AddScoped<IPassword, Password>()
+                .AddScoped<UserRepositoryAbstract, UserRepository>()
                 .AddScoped<FriendRepositoryAbstract, FriendRepository>()
                 .AddScoped<AuthorRepositoryAbstract, AuthorRepository>();
         }

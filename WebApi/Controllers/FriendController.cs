@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -13,6 +14,7 @@ namespace WebApi.Controllers
     [Produces("application/json"/*, "application/xml"*/)]
     [ApiController]
     //[FormatFilter]
+    [Authorize("Bearer")]
     public class FriendController : ControllerBase
     {
         public IMediator Mediator { get; }
